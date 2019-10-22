@@ -72,7 +72,7 @@ public class ProblemSet4 {
         }
       }
 
-      System.out.printf("\n%,d.", integerSum);
+      System.out.printf("%,d.", integerSum);
     }
 
     /*
@@ -83,7 +83,27 @@ public class ProblemSet4 {
      */
 
     public void reverse() {
+      int forwardPositiveIntegerInput;
+      System.out.println("\n");
+      do {
+        System.out.print("Positive integer: ");
+        forwardPositiveIntegerInput = in.nextInt();
+      } while (forwardPositiveIntegerInput <= 0);
 
+      String forwardPositiveInteger = String.valueOf(forwardPositiveIntegerInput);
+      String reversePositiveInteger = "";
+      String digitToAdd = "";
+
+      for (int i = forwardPositiveInteger.length(); i > 0; i--) {
+        if(i != forwardPositiveInteger.length()) {
+          reversePositiveInteger = reversePositiveInteger + ", ";
+        }
+        digitToAdd = forwardPositiveInteger.substring(i - 1, i);
+        reversePositiveInteger = reversePositiveInteger + digitToAdd;
+      }
+      reversePositiveInteger = reversePositiveInteger + ".";
+
+      System.out.println("\n" + reversePositiveInteger);
     }
 
     /*
@@ -94,7 +114,29 @@ public class ProblemSet4 {
      */
 
     public void digits() {
+      boolean initialPrompt = true;
+      int userInt;
+      do {
+          if (initialPrompt) {
+              initialPrompt = false;
+              System.out.print("\nPositive integer: ");
+          } else {
+              System.out.print("Positive integer: ");
+          }
+          userInt = in.nextInt();
+      } while (userInt <= 0);
 
+      int storageInt = userInt;
+      long sum = 0;
+
+      do {
+          storageInt = userInt % 10;
+          if (storageInt % 2 != 0) { //test for odd number
+              sum += storageInt;
+          }
+          userInt /= 10;
+      } while (userInt > 0);
+      System.out.print("\n" + sum + ".\n");
     }
 
     /*
@@ -106,7 +148,22 @@ public class ProblemSet4 {
      */
 
     public void average() {
+      int integerListItem = 0;
+      int integerListTotal = 0;
+      int numNonNegativeIntegers = 0;
 
+      System.out.println("");
+      do {
+        System.out.print("Non-negative integer: ");
+        integerListItem = in.nextInt();
+        if(integerListItem >= 0) {
+          integerListTotal += integerListItem;
+          numNonNegativeIntegers++;
+        }
+      } while (integerListItem >= 0);
+
+      double nonNegativeIntegerAverage = (double) integerListTotal / (double) numNonNegativeIntegers;
+      System.out.printf("\n%.2f\n", nonNegativeIntegerAverage);
     }
 
     /*
