@@ -250,7 +250,28 @@ public class ProblemSet4 {
      */
 
     public void mario() {
+      long height;
+      long numSpace = 0;
+      do
+      {
+          System.out.print("Height: ");
+          height = in.nextLong();
 
+      } while (height < 1 || height > 24);
+      System.out.print("\n");
+      for (long i = 1; i <= height; i++) {
+
+          for (long j = height-i; j > 0; j--) {
+              System.out.print(" ");
+              numSpace++;
+          }
+          for (long h = height+1-numSpace; h > 0; h--) {
+              System.out.print("#");
+          }
+          System.out.print("\n");
+          numSpace = 0;
+      }
+      System.out.print("\n");
     }
 
     /*
@@ -261,7 +282,30 @@ public class ProblemSet4 {
      */
 
     public void luigi() {
-
+      int pyramidHeight = 0;
+      int numHashtags;
+      int numSpaces;
+      System.out.println("");
+      while (pyramidHeight < 1 || pyramidHeight > 24) {
+          System.out.print("Height: ");
+          pyramidHeight = in.nextInt();
+      }
+      System.out.println("");
+      for (int i = 1; i <= pyramidHeight; i++) {
+        numHashtags = i;
+        numSpaces = pyramidHeight - numHashtags - 1;
+        for (int x = 0; x <= numSpaces; x++) {
+          System.out.print(" ");
+        }
+        for (int y = 0; y <= numHashtags; y++) {
+          System.out.print("#");
+        }
+        System.out.print(" ");
+        for (int z = 0; z <= numHashtags; z++) {
+          System.out.print("#");
+        }
+        System.out.print("\n");
+      }
     }
 
     /*
@@ -272,6 +316,37 @@ public class ProblemSet4 {
      */
 
     public void credit() {
-
+      System.out.println("");
+      in.nextLine();
+      System.out.print("Number: ");
+      String cardNumber = in.nextLine();
+      int sumEveryOtherDigit = 0;
+      int digitToMultiply;
+      int totalSum = 0;
+      for (int i = cardNumber.length() - 2; i >= 0; i -= 2) {
+        digitToMultiply = Character.getNumericValue(cardNumber.charAt(i));
+        sumEveryOtherDigit = digitToMultiply * 2;
+          if (sumEveryOtherDigit >= 10) {
+            totalSum += (int)((sumEveryOtherDigit / Math.pow(10, 0)) % 10) + (int)((sumEveryOtherDigit / Math.pow(10, 1)) % 10);
+          } else {
+            totalSum += sumEveryOtherDigit;
+          }
+      }
+      for (int i = cardNumber.length() - 1; i >= 0; i -= 2) {
+        digitToMultiply = Character.getNumericValue(cardNumber.charAt(i));
+        totalSum += digitToMultiply;
+      }
+      String everyOtherDigitString = Integer.toString(totalSum);
+      if (everyOtherDigitString.charAt(everyOtherDigitString.length() - 1) == '0') {
+        if (cardNumber.charAt(0) == '3' && (cardNumber.charAt(1) == '4' || cardNumber.charAt(1) == '7')) {
+          System.out.println("\nAmex.");
+        } else if (cardNumber.charAt(0) == '5' && (cardNumber.charAt(1) == '1' || cardNumber.charAt(1) == '2' || cardNumber.charAt(3) == '3' || cardNumber.charAt(4) == '4' || cardNumber.charAt(5) == '5')) {
+          System.out.println("\nMastercard.");
+        } else if (cardNumber.charAt(0) == '4') {
+          System.out.println("\nVisa.");
+        }
+      } else {
+        System.out.println("\nInvalid.");
+      }
     }
 }
