@@ -52,20 +52,20 @@ public class ProblemSet4 {
      */
 
     public void sum() {
-      int firstinteger = 1;
-      int secondInteger = 0;
+      int lowerbound = 1;
+      int UpperBound = 0;
       do {
         System.out.print("\nLower bound: ");
-        firstinteger = in.nextInt();
+        lowerbound = in.nextInt();
         System.out.print("Upper bound: ");
-        secondInteger = in.nextInt();
-      } while (firstinteger > secondInteger);
+        UpperBound = in.nextInt();
+      } while (lowerbound > UpperBound);
 
       int integerSum = 0;
       int addableAmount = 0;
 
 
-      for (int i = firstinteger; i <= secondInteger; i++) {
+      for (int i = lowerbound; i <= UpperBound; i++) {
         if (i % 2 == 0) {
           addableAmount = Math.abs(i);
           integerSum += addableAmount;
@@ -83,27 +83,27 @@ public class ProblemSet4 {
      */
 
     public void reverse() {
-      int forwardPositiveIntegerInput;
+      int positiveInteger;
       System.out.println("\n");
       do {
         System.out.print("Positive integer: ");
-        forwardPositiveIntegerInput = in.nextInt();
-      } while (forwardPositiveIntegerInput <= 0);
+        positiveInteger = in.nextInt();
+      } while (positiveInteger <= 0);
 
-      String forwardPositiveInteger = String.valueOf(forwardPositiveIntegerInput);
-      String reversePositiveInteger = "";
-      String digitToAdd = "";
+      String normalPositive = String.valueOf(positiveInteger);
+      String reversePositive = "";
+      String finalInt = "";
 
-      for (int i = forwardPositiveInteger.length(); i > 0; i--) {
-        if(i != forwardPositiveInteger.length()) {
-          reversePositiveInteger = reversePositiveInteger + ", ";
+      for (int i = normalPositive.length(); i > 0; i--) {
+        if(i != normalPositive.length()) {
+          reversePositive = reversePositive + ", ";
         }
-        digitToAdd = forwardPositiveInteger.substring(i - 1, i);
-        reversePositiveInteger = reversePositiveInteger + digitToAdd;
+        finalInt = normalPositive.substring(i - 1, i);
+        reversePositive = reversePositive + finalInt;
       }
-      reversePositiveInteger = reversePositiveInteger + ".";
+      reversePositive = reversePositive + ".";
 
-      System.out.println("\n" + reversePositiveInteger);
+      System.out.println("\n" + reversePositive);
     }
 
     /*
@@ -283,8 +283,8 @@ public class ProblemSet4 {
 
     public void luigi() {
       int pyramidHeight = 0;
-      int numHashtags;
-      int numSpaces;
+      int sharpCount;
+      int spaceCount;
       System.out.println("");
       while (pyramidHeight < 1 || pyramidHeight > 24) {
           System.out.print("Height: ");
@@ -292,16 +292,16 @@ public class ProblemSet4 {
       }
       System.out.println("");
       for (int i = 1; i <= pyramidHeight; i++) {
-        numHashtags = i;
-        numSpaces = pyramidHeight - numHashtags - 1;
-        for (int x = 0; x <= numSpaces; x++) {
+        sharpCount = i;
+        spaceCount = pyramidHeight - sharpCount - 1;
+        for (int x = 0; x <= spaceCount; x++) {
           System.out.print(" ");
         }
-        for (int y = 0; y <= numHashtags; y++) {
+        for (int y = 0; y <= sharpCount; y++) {
           System.out.print("#");
         }
         System.out.print(" ");
-        for (int z = 0; z <= numHashtags; z++) {
+        for (int z = 0; z <= sharpCount; z++) {
           System.out.print("#");
         }
         System.out.print("\n");
