@@ -232,7 +232,35 @@ public class ProblemSet4 {
      */
 
     public void factors() {
+      int intToFactor = 0;
+      System.out.println(" ");
+      while (intToFactor <= 0) {
+          System.out.print("Positive integer: ");
+          intToFactor = in.nextInt();
+      }
 
+      String usedFactors = " ";
+      int firstFactor;
+      int secondFactor;
+      boolean isStarting = false;
+      double remainder;
+
+      for (int i = 1; i <= intToFactor; i++) {
+        firstFactor = i;
+        remainder = (double) intToFactor % (double) firstFactor;
+        secondFactor = intToFactor / firstFactor;
+        if (remainder == 0 && !usedFactors.contains(String.valueOf(" " + firstFactor + " ")) && !usedFactors.contains(String.valueOf(" " + secondFactor + " "))) {
+          usedFactors = usedFactors + firstFactor + " " + secondFactor + " ";
+          if (isStarting == true) {
+            System.out.print(", ");
+          } else {
+            System.out.println(" ");
+          }
+          System.out.print(firstFactor + ", " + secondFactor);
+          isStarting = true;
+        }
+      }
+      System.out.print(".");
     }
 
     /*
@@ -313,16 +341,16 @@ public class ProblemSet4 {
       in.nextLine();
       System.out.print("Number: ");
       String cardNumber = in.nextLine();
-      int sumEveryOtherDigit = 0;
+      int sumOddDigit = 0;
       int digitToMultiply;
       int totalSum = 0;
       for (int i = cardNumber.length() - 2; i >= 0; i -= 2) {
         digitToMultiply = Character.getNumericValue(cardNumber.charAt(i));
-        sumEveryOtherDigit = digitToMultiply * 2;
-          if (sumEveryOtherDigit >= 10) {
-            totalSum += (int)((sumEveryOtherDigit / Math.pow(10, 0)) % 10) + (int)((sumEveryOtherDigit / Math.pow(10, 1)) % 10);
+        sumOddDigit = digitToMultiply * 2;
+          if (sumOddDigit >= 10) {
+            totalSum += (int)((sumOddDigit / Math.pow(10, 0)) % 10) + (int)((sumOddDigit / Math.pow(10, 1)) % 10);
           } else {
-            totalSum += sumEveryOtherDigit;
+            totalSum += sumOddDigit;
           }
       }
       for (int i = cardNumber.length() - 1; i >= 0; i -= 2) {
