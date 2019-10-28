@@ -114,28 +114,28 @@ public class ProblemSet4 {
      */
 
     public void digits() {
-      boolean initialPrompt = true;
-      int userInt;
+      boolean trueFalse = true;
+      int promptInt;
       do {
-          if (initialPrompt) {
-              initialPrompt = false;
+          if (trueFalse) {
+              trueFalse = false;
               System.out.print("\nPositive integer: ");
           } else {
               System.out.print("Positive integer: ");
           }
-          userInt = in.nextInt();
-      } while (userInt <= 0);
+          promptInt = in.nextInt();
+      } while (promptInt <= 0);
 
-      int storageInt = userInt;
+      int storageInt = promptInt;
       long sum = 0;
 
       do {
-          storageInt = userInt % 10;
+          storageInt = promptInt % 10;
           if (storageInt % 2 != 0) { //test for odd number
               sum += storageInt;
           }
-          userInt /= 10;
-      } while (userInt > 0);
+          promptInt /= 10;
+      } while (promptInt > 0);
       System.out.print("\n" + sum + ".\n");
     }
 
@@ -148,22 +148,22 @@ public class ProblemSet4 {
      */
 
     public void average() {
-      int integerListItem = 0;
-      int integerListTotal = 0;
+      int itemNumber = 0;
+      int numInteger = 0;
       int numNonNegativeIntegers = 0;
 
       System.out.println("");
       do {
         System.out.print("Non-negative integer: ");
-        integerListItem = in.nextInt();
-        if(integerListItem >= 0) {
-          integerListTotal += integerListItem;
+        itemNumber = in.nextInt();
+        if(itemNumber >= 0) {
+          numInteger += itemNumber;
           numNonNegativeIntegers++;
         }
-      } while (integerListItem >= 0);
+      } while (itemNumber >= 0);
 
       if (numNonNegativeIntegers > 0) {
-        double nonNegativeIntegerAverage = (double) integerListTotal / (double) numNonNegativeIntegers;
+        double nonNegativeIntegerAverage = (double) numInteger / (double) numNonNegativeIntegers;
         System.out.printf("\n%.2f\n", nonNegativeIntegerAverage);
       } else {
         System.out.println("\nIn order for the program to work, you need to input at least one number to average before entering a negative to end the program.");
@@ -205,31 +205,24 @@ public class ProblemSet4 {
      */
 
     public void fibonacci() {
-        boolean initialPrompt = true;
-        int userInt;
-        do {
-            if (initialPrompt) {
-                initialPrompt = false;
-                System.out.print("\nPositive integer: ");
-            } else {
-                System.out.print("Positive integer: ");
-            }
-            userInt = in.nextInt();
-        } while (userInt < 1 || userInt > 92);
-        int sum = 0;
-        int firstAdded = 0;
-        int secondAdded = 1;
-        for (int i = 2; i < userInt; i++) { //offset due to declaration of initial numbers
-            sum = firstAdded + secondAdded;
-            firstAdded = secondAdded;
-            secondAdded = sum;
-        }
-        if (userInt == 1) {
-            sum = firstAdded;
-        } else if (userInt == 2) {
-            sum = secondAdded;
-        }
-        System.out.println("\n" + sum + ".");
+      int n = 0;
+      System.out.println("");
+      while (n <= 0 || n > 92) {
+          System.out.print("Positive integer: ");
+          n = in.nextInt();
+      }
+
+      long base1 = 0;
+      long base2 = 1;
+      long fibonacci = 0;
+
+      for (int i = 2; i <= n; i++) {
+          fibonacci = base1 + base2;
+          base1 = base2;
+          base2 = fibonacci;
+      }
+
+      System.out.println("\n" + base2 + ".");
     }
 
     /*
