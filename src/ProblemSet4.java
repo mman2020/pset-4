@@ -177,17 +177,17 @@ public class ProblemSet4 {
      */
 
     public void prime() {
-      int maybePrimeInteger;
+      int primePrompt;
       boolean isPrime = true;
 
       System.out.println("");
       do {
         System.out.print("Non-negative integer: ");
-        maybePrimeInteger = in.nextInt();
-      } while (maybePrimeInteger < 0);
+        primePrompt = in.nextInt();
+      } while (primePrompt < 0);
 
-      String maybePrimeString = String.valueOf(maybePrimeInteger);
-      for (int i = 2; i <= maybePrimeInteger / 2; i++) {
+      String maybePrimeString = String.valueOf(primePrompt);
+      for (int i = 2; i <= primePrompt / 2; i++) {
 
       }
       if (isPrime == true) {
@@ -212,17 +212,17 @@ public class ProblemSet4 {
           n = in.nextInt();
       }
 
-      long base1 = 0;
-      long base2 = 1;
+      long firstBase = 0;
+      long secondBase = 1;
       long fibonacci = 0;
 
       for (int i = 2; i <= n; i++) {
-          fibonacci = base1 + base2;
-          base1 = base2;
-          base2 = fibonacci;
+          fibonacci = firstBase + secondBase;
+          firstBase = secondBase;
+          secondBase = fibonacci;
       }
 
-      System.out.println("\n" + base2 + ".");
+      System.out.println("\n" + secondBase + ".");
     }
 
     /*
